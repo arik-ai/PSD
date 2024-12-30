@@ -59,6 +59,18 @@ options = st.sidebar.radio("Pilih Halaman:", ['Analisis Data', 'Preprocessing', 
 # Main Pages
 if options == 'Analisis Data':
     st.title("Klasifikasi Kualitas Air Minum Menggunakan Metode KNN")
+    st.write("### Penjelasan dan Tujuan")
+    st.markdown(
+        """
+        Penelitian ini bertujuan untuk mengklasifikasikan kualitas air minum berdasarkan parameter fisikokimia yang terdapat dalam dataset. Dengan menggunakan metode K-Nearest Neighbors (KNN), sistem ini dapat membantu menentukan apakah air layak diminum atau tidak. 
+
+        Tujuan utama dari klasifikasi ini adalah:
+        - Membantu dalam pengambilan keputusan terkait pengelolaan sumber daya air.
+        - Memberikan informasi awal tentang kualitas air untuk masyarakat atau instansi terkait.
+        - Meningkatkan kesadaran akan pentingnya parameter kualitas air dalam kehidupan sehari-hari.
+        """
+    )
+
     data = load_data()
     st.write("### Data Awal:")
     st.dataframe(data.head())
@@ -71,6 +83,22 @@ if options == 'Analisis Data':
 
     st.write("### Statistik Deskriptif:")
     st.dataframe(data.describe())
+
+    st.write("### Penjelasan Atribut Dataset:")
+    st.markdown(
+        """
+        - **pH**: Mengukur tingkat keasaman atau kebasaan air. Skala pH berkisar dari 0 hingga 14, di mana pH 7 adalah netral. pH yang terlalu rendah atau terlalu tinggi bisa berbahaya bagi kesehatan.
+        - **Hardness (Kekerasan)**: Mengukur jumlah mineral, terutama kalsium dan magnesium, yang terlarut dalam air. Kekerasan yang tinggi bisa menyebabkan penumpukan mineral dalam pipa dan peralatan, dan dalam beberapa kasus dapat memengaruhi kesehatan.
+        - **Solids (Padatan)**: Mengukur jumlah total padatan terlarut (Total Dissolved Solids, TDS) dalam air. Tingkat TDS yang tinggi bisa menyebabkan rasa air yang tidak enak dan berpotensi mengandung kontaminan.
+        - **Chloramines**: Senyawa kimia yang mengandung klorin dan amonia, sering digunakan untuk disinfeksi air minum. Kadar chloramines yang terlalu tinggi bisa menyebabkan iritasi kulit dan mata.
+        - **Sulfate**: Ion sulfat dalam air. Kadar sulfat yang tinggi dapat menyebabkan rasa pahit dan bisa berdampak negatif pada kesehatan, terutama bagi sistem pencernaan.
+        - **Conductivity (Konduktivitas)**: Mengukur kemampuan air untuk menghantarkan listrik, yang bergantung pada jumlah ion terlarut. Konduktivitas tinggi dapat mengindikasikan adanya polutan atau garam dalam air.
+        - **Organic Carbon (Karbon Organik)**: Mengukur jumlah karbon organik dalam air yang berasal dari bahan organik. Tingkat karbon organik yang tinggi bisa menunjukkan adanya bahan kimia berbahaya atau polusi biologis.
+        - **Trihalomethanes (THMs)**: Produk sampingan dari disinfeksi air dengan klorin. THMs dianggap sebagai kontaminan yang dapat meningkatkan risiko kanker jika kadarnya terlalu tinggi dalam jangka panjang.
+        - **Turbidity (Kekeruhan)**: Mengukur kejernihan air. Air yang keruh menunjukkan adanya partikel tersuspensi, yang bisa mengindikasikan adanya kontaminasi mikroorganisme atau polutan lain.
+        - **Potability**: Menunjukkan apakah air layak dikonsumsi atau tidak, seringkali dinyatakan sebagai nilai biner (1 untuk layak minum, 0 untuk tidak layak minum).
+        """
+    )
 
 elif options == 'Preprocessing':
     st.title("Preprocessing Data")
